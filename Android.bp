@@ -24,5 +24,4 @@ cc_binary {
         "-Wno-unused-parameter",
         "-DDEBUG",
     ],
-    static_libs: ["libgcc"],
 }
