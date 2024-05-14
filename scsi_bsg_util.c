@@ -397,6 +397,6 @@ int send_bsg_scsi_trs(int fd, void *request_buff, void *reply_buff, __u32 req_bu
 			BSG_REPLY_SZ);
 
 	WRITE_LOG("%s res_len %d\n", __func__,
-		reply_buff->reply_payload_rcv_len);
+		((struct ufs_bsg_reply*)reply_buff)->reply_payload_rcv_len);
 	return ret;
 }

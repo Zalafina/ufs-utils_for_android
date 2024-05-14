@@ -22,9 +22,9 @@
 #define STR_BUF_LEN 33
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 #define ATTR_RSRV() "Reserved", BYTE, ACC_INVALID, MODE_INVALID, LEVEL_INVALID
-#define ATTR_VENDOR() "VendorSpecificAttr", BYTE, (URD|UWRT), (READ_NRML|WRITE_VLT)
+#define ATTR_VENDOR() "VendorSpecificAttr", BYTE, (URD|UWRT), (READ_NRML|WRITE_VLT), LEVEL_INVALID
 #define FLAG_RSRV() "Reserved", ACC_INVALID, MODE_INVALID, LEVEL_INVALID
-#define FLAG_VENDOR() "VendorSpecificFlag",  (URD|UWRT), (READ_NRML|WRITE_VLT)
+#define FLAG_VENDOR() "VendorSpecificFlag",  (URD|UWRT), (READ_NRML|WRITE_VLT), LEVEL_INVALID
 
 #define CONFIG_HEADER_OFFSET 0x16
 #define CONFIG_LUN_OFFSET 0x1A
@@ -2049,7 +2049,7 @@ int do_flags(struct tool_options *opt)
 {
 	int fd;
 	int rc = OK;
-	__u8 opcode, flag_idn, value;
+	__u8 opcode = UPIU_QUERY_OPCODE_NOP, flag_idn, value;
 	struct flag_fields *tmp;
 	struct ufs_bsg_request bsg_req = {0};
 	struct ufs_bsg_reply bsg_rsp = {0};

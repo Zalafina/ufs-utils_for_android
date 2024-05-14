@@ -1,0 +1,28 @@
+cc_binary {
+    name: "ufs-utils",
+    srcs: [
+        "ufs.c",
+        "ufs_cmds.c",
+        "options.c",
+        "scsi_bsg_util.c",
+        "ufs_err_hist.c",
+        "unipro.c",
+        "ufs_ffu.c",
+        "ufs_vendor.c",
+        "hmac_sha2.c",
+        "sha2.c",
+        "ufs_rpmb.c",
+        "ufs_arpmb.c",
+        "ufs_hmr.c",
+    ],
+    cflags: [
+        "-D_FILE_OFFSET_BITS=64",
+        "-D_FORTIFY_SOURCE=2",
+        "-Wall",
+        "-Wundef",
+        "-Wno-missing-braces",
+        "-Wno-unused-parameter",
+        "-DDEBUG",
+    ],
+    static_libs: ["libgcc"],
+}
